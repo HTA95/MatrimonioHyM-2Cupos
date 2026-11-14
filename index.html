@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f5f0e8">
+<title>Marisol & Héctor | Nuestra boda</title>
+
+<style>
+:root {
+  --ivory: #fbf8f2;
+  --paper: #f5f0e8;
+  --olive: #68785d;
+  --sage: #a4ad96;
+  --burgundy: #743c48;
+  --text: #665c50;
+  --line: #ded8ca;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--text);
+  font-family: Georgia, serif;
+}
+
+/* PORTADA Y SOBRE */
+
+.cover {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 16px;
+  text-align: center;
+  background: var(--paper);
+}
+
+.small-title {
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  color: #9b826e;
+}
+
+.envelope {
+  position: relative;
+  width: min(600px, 96vw);
+  margin: 0 auto 15px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.envelope-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 1s ease, opacity 1s ease;
+  transform-origin: center center;
+}
+
+.envelope.open .envelope-art {
+  transform: translateY(-35px) scale(0.94);
+  opacity: 0;
+}
+
+.instruction {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #947c68;
+  margin-top: 5px;
+}
+
+/* INVITACIÓN */
+
+.invitation {
+  display: none;
+  min-height: 100vh;
+  text-align: center;
+  padding: 65px 22px;
+  background: var(--ivory);
+}
+
+.invitation.visible {
+  display: block;
+  animation: appear 1.2s ease;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #a18770;
+  margin-bottom: 25px;
+}
+
+.names {
+  font-size: clamp(32px, 10vw, 60px);
+  font-weight: normal;
+  font-style: italic;
+  line-height: 1.3;
+  white-space: nowrap;
+  color: #70584a;
+  margin-bottom: 44px;
+}
+
+.ampersand {
+  display: inline;
+  font-size: 0.7em;
+  margin: 0 0.18em;
+  color: #a27d6b;
+}
+
+/* SECCIÓN 1: INTRODUCCIÓN */
+
+.intro {
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 0 5px 55px;
+}
+
+.section-title {
+  color: var(--olive);
+  font-size: 29px;
+  font-weight: normal;
+  font-style: italic;
+  margin-bottom: 22px;
+}
+
+.message {
+  font-size: 16px;
+  line-height: 2;
+  color: #79685b;
+}
+
+/* SECCIÓN 1B: NUESTRA HISTORIA (carrusel) */
+
+.story {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 45px 0 40px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.story + .event-section {
+  border-top: none;
+}
+
+.carousel {
+  position: relative;
+  max-width: 390px;
+  margin: 0 auto;
+}
+
+.carousel-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-track:focus-visible {
+  outline: 2px solid var(--sage);
+  outline-offset: 4px;
+}
+
+.carousel-slide {
+  position: relative;
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+
+.carousel-slide img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-style: italic;
+  color: var(--sage);
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: rgba(251, 248, 242, 0.88);
+  color: var(--olive);
+  font-family: inherit;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.carousel-btn:hover {
+  background: var(--olive);
+  color: white;
+}
+
+.carousel-btn.prev { left: 8px; }
+.carousel-btn.next { right: 8px; }
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 18px;
+}
+
+.carousel-dot {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.carousel-dot::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--olive);
+  border-radius: 50%;
+  background: transparent;
+  transition: background 0.2s ease;
+}
+
+.carousel-dot.active::before {
+  background: var(--olive);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track { scroll-behavior: auto; }
+}
+
+/* SECCIÓN 2: DETALLES */
+
+.event-section {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 45px 0 35px;
+  border-top: 1px solid var(--line);
+}
+
+.event-date {
+  color: #927a65;
+  font-size: 15px;
+  letter-spacing: 2px;
+  margin: -5px 0 35px;
+}
+
+.event-card {
+  padding: 20px 10px 38px;
+}
+
+.event-card + .event-card {
+  border-top: 1px solid var(--line);
+  padding-top: 38px;
+}
+
+.event-illustration {
+  display: block;
+  width: min(100%, 300px);
+  height: auto;
+  max-height: 220px;
+  object-fit: contain;
+  margin: 0 auto 22px;
+}
+
+.event-icon {
+  display: block;
+  width: min(100%, 190px);
+  height: auto;
+  margin: 0 auto 22px;
+}
+
+.event-type {
+  color: var(--olive);
+  font-size: 25px;
+  font-style: italic;
+  font-weight: normal;
+  margin-bottom: 12px;
+}
+
+.event-time {
+  color: #927a65;
+  font-size: 25px;
+  margin-bottom: 16px;
+}
+
+.event-name {
+  color: #66594d;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+
+.event-address {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #817467;
+  max-width: 300px;
+  margin: 0 auto 20px;
+}
+
+/* BOTONES MAPS */
+
+.map-button {
+  display: inline-block;
+  padding: 12px 25px;
+  border: 1px solid var(--olive);
+  border-radius: 2px;
+  color: var(--olive);
+  text-decoration: none;
+  font-family: Georgia, serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.map-button:hover {
+  background: var(--olive);
+  color: white;
+}
+
+footer {
+  margin-top: 25px;
+  padding-top: 30px;
+  border-top: 1px solid var(--line);
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #a18770;
+}
+
+/* SECCION 3: ITINERARIO */
+
+.itinerary {
+  max-width: 520px;
+  margin: 65px auto 0;
+  padding: 40px 22px;
+  border-top: 1px solid #dfd2c2;
+  border-bottom: 1px solid #dfd2c2;
+}
+
+.itinerary-heading {
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #a18770;
+  margin-bottom: 12px;
+}
+
+.itinerary-title {
+  font-size: 30px;
+  font-style: italic;
+  font-weight: normal;
+  color: #70584a;
+}
+
+.timeline {
+  position: relative;
+  max-width: 390px;
+  margin: 38px auto 0;
+  text-align: left;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  bottom: 10px;
+  width: 1px;
+  background: #c9cdb8;
+}
+
+.timeline-item {
+  position: relative;
+  padding: 0 0 34px 35px;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: 1px;
+  top: 3px;
+  width: 13px;
+  height: 13px;
+  border: 1px solid #89916f;
+  border-radius: 50%;
+  background: #fbf8f2;
+}
+
+.timeline-time {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #89916f;
+  margin-bottom: 7px;
+}
+
+.timeline-event {
+  font-size: 21px;
+  font-weight: normal;
+  font-style: italic;
+  color: #70584a;
+  margin-bottom: 5px;
+}
+
+.timeline-description {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #79685b;
+}
+
+/* SECCIÓN 4: DRESS CODE */
+
+.dresscode {
+  max-width: 520px;
+  margin: 65px auto 0;
+  padding: 45px 25px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+}
+
+.dresscode-heading {
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #a18770;
+  margin-bottom: 14px;
+}
+
+.dresscode-title {
+  font-size: 30px;
+  font-style: italic;
+  font-weight: normal;
+  color: #70584a;
+  margin-bottom: 12px;
+}
+
+.dresscode-type {
+  display: inline-block;
+  color: var(--olive);
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 10px 22px;
+  border-top: 1px solid var(--sage);
+  border-bottom: 1px solid var(--sage);
+  margin: 12px 0 25px;
+}
+
+.dresscode-message {
+  max-width: 390px;
+  margin: 0 auto;
+  font-size: 15px;
+  line-height: 2;
+  color: #79685b;
+}
+
+.dresscode-note {
+  margin-top: 22px;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.8;
+  color: var(--olive);
+}
+
+/* SECCIÓN 5: REGALOS */
+
+.gifts {
+  max-width: 520px;
+  margin: 65px auto 0;
+  padding: 45px 25px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+}
+
+.gifts-heading {
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #a18770;
+  margin-bottom: 14px;
+}
+
+.gifts-title {
+  font-size: 30px;
+  font-style: italic;
+  font-weight: normal;
+  color: #70584a;
+  margin-bottom: 18px;
+}
+
+.gifts-intro {
+  max-width: 390px;
+  margin: 0 auto 32px;
+  font-size: 15px;
+  line-height: 1.9;
+  color: #79685b;
+}
+
+.gift-option {
+  max-width: 390px;
+  margin: 0 auto 28px;
+  padding: 25px 20px;
+  border: 1px solid var(--line);
+}
+
+.gift-option:last-child {
+  margin-bottom: 0;
+}
+
+.gift-option-title {
+  font-size: 21px;
+  font-style: italic;
+  font-weight: normal;
+  color: #70584a;
+  margin-bottom: 12px;
+}
+
+.gift-option-description {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #79685b;
+  margin-bottom: 18px;
+}
+
+.gift-details {
+  font-size: 13px;
+  line-height: 2;
+  color: #665c50;
+  margin-bottom: 20px;
+}
+
+.gift-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background: var(--olive);
+  color: white;
+  border: none;
+  font-family: inherit;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.gift-button:hover {
+  opacity: 0.85;
+}
+
+.gift-link {
+  color: var(--olive);
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* SECCIÓN 6: PACTOS Y CONDICIONES */
+
+.pacts {
+  max-width: 520px;
+  margin: 65px auto 0;
+  padding: 45px 25px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+}
+
+.pacts-heading {
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #a18770;
+  margin-bottom: 14px;
+}
+
+.pacts-title {
+  font-size: 30px;
+  font-style: italic;
+  font-weight: normal;
+  color: #70584a;
+  margin-bottom: 18px;
+}
+
+.pacts-intro {
+  max-width: 390px;
+  margin: 0 auto 32px;
+  font-size: 15px;
+  line-height: 1.9;
+  color: #79685b;
+}
+
+.pact-list {
+  max-width: 390px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.pact {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 20px 4px;
+  border-top: 1px solid var(--line);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.pact:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.pact input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.pact-box {
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  margin-top: 3px;
+  border: 1px solid var(--olive);
+  border-radius: 2px;
+  background: var(--ivory);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.pact-box::after {
+  content: "";
+  width: 6px;
+  height: 11px;
+  margin-top: -2px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) scale(0);
+  transition: transform 0.2s ease;
+}
+
+.pact input:checked + .pact-box {
+  background: var(--olive);
+}
+
+.pact input:checked + .pact-box::after {
+  transform: rotate(45deg) scale(1);
+}
+
+.pact input:focus-visible + .pact-box {
+  outline: 2px solid var(--sage);
+  outline-offset: 3px;
+}
+
+.pact-text {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #79685b;
+}
+
+.pact-name {
+  display: block;
+  font-size: 17px;
+  font-style: italic;
+  color: #70584a;
+  margin-bottom: 4px;
+}
+
+.pacts-status {
+  margin-top: 26px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: #947c68;
+}
+
+.pacts-status.complete {
+  color: var(--olive);
+  font-style: italic;
+}
+
+/* SECCIÓN 7: RSVP */
+
+.rsvp {
+  max-width: 520px;
+  margin: 65px auto 0;
+  padding: 45px 25px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+}
+
+.rsvp-heading {
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #a18770;
+  margin-bottom: 14px;
+}
+
+.rsvp-title {
+  font-size: 30px;
+  font-style: italic;
+  font-weight: normal;
+  color: #70584a;
+  margin-bottom: 18px;
+}
+
+.rsvp-deadline {
+  display: inline-block;
+  color: var(--olive);
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 10px 18px;
+  border-top: 1px solid var(--sage);
+  border-bottom: 1px solid var(--sage);
+  margin-bottom: 18px;
+}
+
+.rsvp-intro {
+  max-width: 390px;
+  margin: 0 auto 32px;
+  font-size: 15px;
+  line-height: 1.9;
+  color: #79685b;
+}
+
+.rsvp-form {
+  max-width: 390px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.field {
+  margin-bottom: 28px;
+  border: none;
+}
+
+.field-label {
+  display: block;
+  font-size: 17px;
+  font-style: italic;
+  color: #70584a;
+  margin-bottom: 8px;
+  padding: 0;
+}
+
+.field-hint {
+  display: block;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #947c68;
+  margin-bottom: 10px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.field input[type="text"],
+.field input[type="tel"],
+.field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: var(--paper);
+  color: var(--text);
+  font-family: Georgia, serif;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.field textarea.short {
+  min-height: 64px;
+}
+
+.van-box .van-phone {
+  margin-top: 22px;
+}
+
+.field input[type="text"]:focus,
+.field input[type="tel"]:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--olive);
+}
+
+.choice-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.choice {
+  position: relative;
+  flex: 1;
+  min-width: 120px;
+}
+
+.choice input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.choice span {
+  display: block;
+  padding: 12px 10px;
+  border: 1px solid var(--olive);
+  border-radius: 2px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--olive);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.choice input:checked + span {
+  background: var(--olive);
+  color: white;
+}
+
+.choice input:focus-visible + span {
+  outline: 2px solid var(--sage);
+  outline-offset: 3px;
+}
+
+.van-box {
+  padding: 20px 18px;
+  border: 1px solid var(--line);
+  margin-bottom: 28px;
+}
+
+.van-box .field {
+  margin-bottom: 0;
+}
+
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.rsvp-submit {
+  display: block;
+  width: 100%;
+  padding: 15px 24px;
+  background: var(--olive);
+  color: white;
+  border: none;
+  font-family: inherit;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.rsvp-submit:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+.rsvp-submit:disabled {
+  background: var(--sage);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.rsvp-feedback {
+  margin-top: 16px;
+  min-height: 22px;
+  font-size: 13px;
+  line-height: 1.7;
+  text-align: center;
+  color: #947c68;
+}
+
+.rsvp-feedback.error {
+  color: var(--burgundy);
+}
+
+.rsvp-feedback.ok {
+  color: var(--olive);
+  font-style: italic;
+}
+
+.rsvp-thanks {
+  display: none;
+  max-width: 390px;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 2;
+  color: #79685b;
+}
+
+.rsvp-thanks strong {
+  display: block;
+  font-size: 24px;
+  font-style: italic;
+  font-weight: normal;
+  color: var(--olive);
+  margin-bottom: 10px;
+}
+
+.calendar-box {
+  margin-top: 26px;
+}
+
+.calendar-hint {
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.8;
+  color: var(--olive);
+  margin-bottom: 14px;
+}
+
+/* CONTADOR */
+
+.countdown {
+  max-width: 520px;
+  margin: 65px auto 0;
+  padding: 45px 25px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+}
+
+.countdown-title {
+  text-wrap: balance;
+  font-size: 30px;
+  font-style: italic;
+  font-weight: normal;
+  color: #70584a;
+  margin-bottom: 28px;
+}
+
+.countdown-grid {
+  max-width: 390px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.countdown-heading {
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #a18770;
+  margin-bottom: 14px;
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.countdown-unit {
+  padding: 16px 4px 12px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.countdown-number {
+  display: block;
+  font-size: clamp(28px, 9vw, 38px);
+  font-style: italic;
+  line-height: 1.1;
+  color: var(--olive);
+  font-variant-numeric: tabular-nums;
+}
+
+.countdown-label {
+  display: block;
+  margin-top: 6px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #947c68;
+}
+
+.countdown-date {
+  margin-top: 18px;
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: #927a65;
+}
+
+.countdown-done {
+  font-size: 24px;
+  font-style: italic;
+  color: var(--olive);
+  padding: 10px 0;
+}
+
+/* DECORACIÓN BOTÁNICA (arte del sobre) */
+
+section.invitation {
+  position: relative;
+  overflow: hidden;
+  padding-top: 96px;
+  padding-bottom: calc(clamp(120px, 32vw, 220px) * 1.3 + 12px);
+  background-color: var(--ivory);
+  background-image: url("textura-papel.jpg");
+  background-repeat: repeat;
+  background-position: top center;
+  background-size: 700px auto;
+}
+
+.invitation > *:not(.deco) {
+  position: relative;
+  z-index: 1;
+}
+
+.deco {
+  position: absolute;
+  z-index: 0;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.deco-tl { top: 0;    left: 0;  width: clamp(120px, 34vw, 210px); transform-origin: top left; }
+.deco-tr { top: 0;    right: 0; width: clamp(110px, 30vw, 190px); transform-origin: top right; }
+.deco-bl { bottom: 0; left: 0;  width: clamp(120px, 32vw, 220px); transform-origin: bottom left; }
+.deco-br { bottom: 0; right: 0; width: clamp(130px, 34vw, 220px); transform-origin: bottom right; }
+
+.invitation.visible .deco {
+  animation: decorIn 1.8s ease both 0.3s;
+}
+
+@keyframes decorIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .invitation.visible .deco { animation: none; }
+}
+
+.ampersand {
+  color: var(--burgundy);
+}
+
+@media (max-width: 480px) {
+  .cover {
+    padding: 20px 8px;
+  }
+
+  .small-title {
+    margin-bottom: 12px;
+  }
+
+  .envelope {
+    width: 100%;
+  }
+
+  .invitation {
+    padding: 55px 22px;
+  }
+
+  .event-illustration {
+    width: min(100%, 270px);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PORTADA -->
+
+<section class="cover" id="cover">
+
+  <p class="small-title">Una invitación especial</p>
+
+  <div
+    class="envelope"
+    id="envelope"
+    onclick="openInvitation()"
+    role="button"
+    tabindex="0"
+    aria-label="Abrir invitación"
+    onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openInvitation(); }"
+  >
+    <img
+      class="envelope-art"
+      src="sobre-marisol-hector.png"
+      alt="Sobre de invitación de boda de Marisol y Héctor"
+    >
+  </div>
+
+  <p class="instruction">TOCA EL SOBRE PARA ABRIR</p>
+
+</section>
+
+<!-- INVITACIÓN -->
+
+<section class="invitation" id="invitation">
+
+  <!-- DECORACIÓN BOTÁNICA (arte del sobre) -->
+  <img class="deco deco-tl" src="hoja-olivo-sup.webp" alt="" aria-hidden="true" decoding="async">
+  <img class="deco deco-tr" src="ramo-burdeo.webp" alt="" aria-hidden="true" decoding="async">
+  <img class="deco deco-bl" src="orquidea-burdeo.webp" alt="" aria-hidden="true" decoding="async">
+  <img class="deco deco-br" src="hoja-olivo-inf.webp" alt="" aria-hidden="true" decoding="async">
+
+  <p class="eyebrow">Ubi tu, ibi ego</p>
+
+  <h1 class="names">
+    Marisol
+    <span class="ampersand">&</span>
+    Héctor
+  </h1>
+
+
+  <!-- SECCIÓN 1: INTRODUCCIÓN -->
+
+  <section class="intro">
+
+    <h2 class="section-title">¡Nos casamos!</h2>
+
+    <p class="message">
+Creemos que el amor está en compartir la vida, cuidarse mutuamente, acompañarse en cada aventura y elegir estar juntos una y otra vez.
+      <br><br>
+Hemos construido nuestra historia rodeados de personas que queremos y admiramos. Tú eres una de ellas, y por eso queremos compartir contigo uno de los días más importantes de nuestras vidas
+      <br><br>
+      ¡Te esperamos para celebrar juntos!
+    </p>
+
+  </section>
+
+  <!-- SECCIÓN 1B: NUESTRA HISTORIA -->
+
+  <section class="story" id="historia">
+
+    <h2 class="section-title">Nuestra historia</h2>
+
+    <div class="carousel" id="storyCarousel">
+
+      <div class="carousel-track" id="storyTrack" tabindex="0" role="group" aria-label="Fotos de nuestra historia">
+        <figure class="carousel-slide">
+          <span class="photo-label">foto1</span>
+          <img src="foto1.jpeg" alt="Nuestra historia, foto 1" loading="lazy" decoding="async" onerror="this.style.display='none'">
+        </figure>
+        <figure class="carousel-slide">
+          <span class="photo-label">foto2</span>
+          <img src="foto2.jpg" alt="Nuestra historia, foto 2" loading="lazy" decoding="async" onerror="this.style.display='none'">
+        </figure>
+        <figure class="carousel-slide">
+          <span class="photo-label">foto3</span>
+          <img src="foto3.jpeg" alt="Nuestra historia, foto 3" loading="lazy" decoding="async" onerror="this.style.display='none'">
+        </figure>
+        <figure class="carousel-slide">
+          <span class="photo-label">foto4</span>
+          <img src="foto4.jpeg" alt="Nuestra historia, foto 4" loading="lazy" decoding="async" onerror="this.style.display='none'">
+        </figure>
+        <figure class="carousel-slide">
+          <span class="photo-label">foto5</span>
+          <img src="foto5.jpeg" alt="Nuestra historia, foto 5" loading="lazy" decoding="async" onerror="this.style.display='none'">
+        </figure>
+        <figure class="carousel-slide">
+          <span class="photo-label">foto6</span>
+          <img src="foto6.jpeg" alt="Nuestra historia, foto 6" loading="lazy" decoding="async" onerror="this.style.display='none'">
+        </figure>
+             <figure class="carousel-slide">
+          <span class="photo-label">foto7</span>
+          <img src="foto7.jpeg" alt="Nuestra historia, foto 7" loading="lazy" decoding="async" onerror="this.style.display='none'">
+        </figure>
+                <figure class="carousel-slide">
+          <span class="photo-label">foto8</span>
+          <img src="foto8.jpeg" alt="Nuestra historia, foto 8" loading="lazy" decoding="async" onerror="this.style.display='none'">
+        </figure>
+                <figure class="carousel-slide">
+          <span class="photo-label">foto9</span>
+          <img src="foto9.jpeg" alt="Nuestra historia, foto 9" loading="lazy" decoding="async" onerror="this.style.display='none'">
+        </figure>
+      </div>
+
+      <button class="carousel-btn prev" id="storyPrev" type="button" aria-label="Foto anterior">&#8249;</button>
+      <button class="carousel-btn next" id="storyNext" type="button" aria-label="Foto siguiente">&#8250;</button>
+
+      <div class="carousel-dots" id="storyDots"></div>
+
+    </div>
+
+  </section>
+
+  <!-- SECCIÓN 2: DETALLES DEL EVENTO -->
+
+  <section class="event-section" id="detalles">
+
+    <h2 class="section-title">El gran día</h2>
+
+    <p class="event-date">13 DE FEBRERO DE 2027</p>
+
+    <!-- CEREMONIA -->
+
+    <article class="event-card">
+
+      <img
+        class="event-illustration"
+        src="ilustracion-parroquia-santos-angeles-custodios.svg"
+        alt="Ilustración arquitectónica de la Parroquia de los Santos Ángeles Custodios"
+      >
+
+      <h3 class="event-type">La ceremonia</h3>
+
+      <p class="event-time">17:00 hrs.</p>
+
+      <p class="event-name">
+        Parroquia de los Santos Ángeles Custodios
+      </p>
+
+      <p class="event-address">
+        Rodolfo Vergara Antúnez 0252<br>
+        Providencia, Santiago
+      </p>
+
+      <a
+        class="map-button"
+        href="https://www.google.com/maps/search/?api=1&query=Parroquia+Santos+Angeles+Custodios+Rodolfo+Vergara+Antunez+0252+Providencia"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        CÓMO LLEGAR ↗️
+      </a>
+
+    </article>
+
+    <!-- CELEBRACIÓN -->
+
+    <article class="event-card">
+
+      <img
+        class="event-icon"
+        src="copas-brindis.webp"
+        alt="Ilustración de dos copas brindando"
+        decoding="async"
+      >
+
+      <h3 class="event-type">La celebración</h3>
+
+      <p class="event-time">Desde las 19:00 hrs.</p>
+
+      <p class="event-name">
+        Centro de Eventos Torres de Paine
+      </p>
+
+      <p class="event-address">
+        Presidente Gabriel González Videla,<br>
+        Parcela 54, Paine
+      </p>
+
+      <a
+        class="map-button"
+        href="https://www.google.com/maps/search/?api=1&query=Centro+de+Eventos+Torres+de+Paine+Presidente+Gabriel+Gonzalez+Videla+Parcela+54+Paine"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        CÓMO LLEGAR ↗️
+      </a>
+
+    </article>
+
+  </section>
+
+  <!-- SECCIÓN 3: ITINERARIO -->
+
+  <section class="itinerary" id="itinerario">
+
+    <p class="itinerary-heading">CADA MOMENTO CUENTA</p>
+
+    <h2 class="itinerary-title">Nuestro itinerario</h2>
+
+    <div class="timeline">
+
+      <article class="timeline-item">
+        <p class="timeline-time">17:00 HRS.</p>
+        <h3 class="timeline-event">Ceremonia religiosa</h3>
+      </article>
+
+      <article class="timeline-item">
+        <p class="timeline-time">19:00 HRS.</p>
+        <h3 class="timeline-event">Recepción en Torres de Paine</h3>
+      </article>
+
+      <article class="timeline-item">
+        <p class="timeline-time">23:00 HRS.</p>
+        <h3 class="timeline-event">¡Comienza la fiesta!</h3>
+        <p class="timeline-description">¡A disfrutar y celebrar juntos!</p>
+      </article>
+
+      <article class="timeline-item">
+        <p class="timeline-time">03:00 HRS.</p>
+        <h3 class="timeline-event">Fin de la fiesta</h3>
+        <p class="timeline-description">Una noche para recordar.</p>
+      </article>
+
+    </div>
+
+  </section>
+
+  <!-- SECCIÓN 4: DRESS CODE -->
+
+  <section class="dresscode" id="dresscode">
+
+    <p class="dresscode-heading">DRESS CODE</p>
+
+    <h2 class="dresscode-title">Formal</h2>
+
+    <p class="dresscode-message">
+      ¡Vengan con sus mejores outfits!
+      <br><br>
+      Queremos verlos elegantes, luciéndose y, sobre todo,
+      cómodos para disfrutar cada momento. Consideren que
+      tendremos una ceremonia en la iglesia y luego un
+      cocktail al aire libre.
+    </p>
+
+    <p class="dresscode-note">
+      ¡Vengan con toda la energía y las ganas de darlo todo!
+      Queremos celebrar y pasarlo increíble junto a ustedes.
+    </p>
+
+  </section>
+
+  <!-- SECCIÓN 5: REGALOS -->
+
+  <section class="gifts" id="regalos">
+
+    <p class="gifts-heading">REGALOS</p>
+
+    <h2 class="gifts-title">Tu presencia es nuestro mejor regalo</h2>
+
+    <p class="gifts-intro">
+Lo más importante para nosotros es compartir este día contigo. Pero si quieres tener un detalle, ¡nos encantaría que fuera parte de nuestra próxima aventura!
+        <br><br>
+Como saben, amamos viajar y estamos muy ilusionados con nuestra luna de miel. Por eso, pensamos en dos formas originales de recibir sus regalitos y sumar nuevos recuerdos a nuestra historia.
+      
+    </p>
+
+    <!-- OPCIÓN 1: TRANSFERENCIA -->
+
+    <div class="gift-option">
+
+      <h3 class="gift-option-title">Transferencia directa</h3>
+
+      <p class="gift-option-description">
+        Puedes transferir a nuestra cuenta de Mercado Pago.
+      </p>
+
+      <p class="gift-details">
+        <strong>Marisol Valeria Garín Opazo</strong><br>
+        RUT: 19.143.506-0<br>
+        Mercado Pago<br>
+        Cuenta Vista<br>
+        N° de cuenta: 1041390804<br>
+        marisolgarin1@gmail.com
+      </p>
+
+      <button class="gift-button" id="copyBtn" type="button" onclick="copyBankData()">
+        Copiar datos
+      </button>
+
+    </div>
+
+    <!-- OPCIÓN 2: LISTA DE NOVIOS -->
+
+    <div class="gift-option">
+
+      <h3 class="gift-option-title">Lista de novios</h3>
+
+      <p class="gift-option-description">
+       Creamos una lista de novios digital con experiencias y deseos para nuestra próxima aventura. ¡Puedes elegir tu favorito!
+      </p>
+
+      <a
+        class="gift-button"
+        href="https://milistadenovios.cl/lista/marisolyhector"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Ver lista de novios
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- SECCIÓN 6: PACTOS Y CONDICIONES -->
+
+  <section class="pacts" id="pactos">
+
+    <p class="pacts-heading">LA LETRA CHICA</p>
+
+    <h2 class="pacts-title">Pactos y Condiciones</h2>
+
+    <p class="pacts-intro">
+      Antes de confirmar tu asistencia, necesitamos que firmes
+      (con un click) cada uno de estos pactos. Son legalmente
+      vinculantes... en el corazón.
+    </p>
+
+    <div class="pact-list">
+
+      <label class="pact">
+        <input type="checkbox" class="pact-check">
+        <span class="pact-box"></span>
+        <span class="pact-text">
+          <span class="pact-name">Impuesto al baile</span>
+          Juro solemnemente bailar al menos una canción de los 90. 🕺
+        </span>
+      </label>
+
+      <label class="pact">
+        <input type="checkbox" class="pact-check">
+        <span class="pact-box"></span>
+        <span class="pact-text">
+          <span class="pact-name">Monopolio al blanco</span>
+          Entiendo que si visto de blanco, los padrinos tienen permitido
+          escoltarme amablemente a la salida. 👰
+        </span>
+      </label>
+
+      <label class="pact">
+        <input type="checkbox" class="pact-check">
+        <span class="pact-box"></span>
+        <span class="pact-text">
+          <span class="pact-name">Cláusula "Adulto Irresponsable"</span>
+          Acepto que quiero ser el adulto irresponsable de la noche, por eso
+          entiendo que el matrimonio es sin niños. 🍻
+        </span>
+      </label>
+
+      <label class="pact">
+        <input type="checkbox" class="pact-check">
+        <span class="pact-box"></span>
+        <span class="pact-text">
+          <span class="pact-name">Acuerdo "Cero Hora Chilena"</span>
+          Sé que la hora de la ceremonia es real. Si me agarra el taco y llego
+          tarde cuando la novia ya va entrando, asumo que tendré que
+          camuflarme entre los arbustos. ⏱️
+        </span>
+      </label>
+
+      <label class="pact">
+        <input type="checkbox" class="pact-check">
+        <span class="pact-box"></span>
+        <span class="pact-text">
+          <span class="pact-name">Pacto "Lo que pasa en la boda..."</span>
+          Prometo que los pasos prohibidos y los abrazos de curado de las
+          3 AM se quedan en la boda. 🤐
+        </span>
+      </label>
+
+    </div>
+
+    <p class="pacts-status" id="pactsStatus" aria-live="polite">
+      0 de 5 pactos firmados
+    </p>
+
+  </section>
+
+  <!-- SECCIÓN 7: RSVP -->
+
+  <section class="rsvp" id="rsvp">
+
+    <p class="rsvp-heading">RSVP</p>
+
+    <h2 class="rsvp-title">Confirma tu asistencia</h2>
+
+    <p class="rsvp-deadline">Hemos reservado 1 cupo para ti</p>
+
+    <p class="rsvp-intro">
+      Para poder organizar todo con cariño, cuéntanos si nos acompañas.
+      Recuerda firmar los pactos de más arriba: sin ellos, el botón no se activa. 😉
+    </p>
+
+    <form class="rsvp-form" id="rsvpForm" novalidate>
+
+      <!-- Campo trampa anti-spam: no completar -->
+      <div class="hp-field" aria-hidden="true">
+        <label>No completar<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
+      </div>
+
+      <!-- i) NOMBRE -->
+      <div class="field">
+        <label class="field-label" for="fName">Nombre y apellido</label>
+        <input type="text" id="fName" name="nombre" autocomplete="name" required>
+      </div>
+
+      <!-- ii) CONFIRMACIÓN -->
+      <fieldset class="field">
+        <legend class="field-label">¿Nos acompañas?</legend>
+        <div class="choice-row">
+          <label class="choice">
+            <input type="radio" name="asistencia" value="Sí" required>
+            <span>¡Sí, ahí estaré!</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="asistencia" value="No">
+            <span>No podré ir</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- Todo lo que sigue se oculta si la persona responde "No podré ir" -->
+      <div id="attendingFields">
+
+      <!-- iii) MENÚ -->
+      <fieldset class="field">
+        <legend class="field-label">Cena</legend>
+        <div class="choice-row">
+          <label class="choice">
+            <input type="radio" name="menu" value="Menú tradicional">
+            <span>Tradicional</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="menu" value="Vegetariano">
+            <span>Vegetariano</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="menu" value="Vegano">
+            <span>Vegano</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <div class="field">
+        <label class="field-label" for="fAllergy">Alergias o intolerancias</label>
+        <span class="field-hint">Opcional. Si no tienes ninguna, déjalo en blanco.</span>
+        <textarea id="fAllergy" name="alergias" class="short"></textarea>
+      </div>
+
+      <!-- iv) VAN -->
+      <div class="van-box">
+        <fieldset class="field">
+          <legend class="field-label">🚐 ¿Te sumas a la van?</legend>
+          <span class="field-hint">
+            El matrimonio es en Paine y queremos que todos vuelvan sanos y salvos.
+            Si se junta un buen grupo, gestionaremos una van a puntos clave de
+            Santiago con un precio preferencial. El traslado lo paga cada uno,
+            pero nosotros conseguimos la rebaja. ¡Avisa si te interesa el cupo!
+          </span>
+          <div class="choice-row">
+            <label class="choice">
+              <input type="radio" name="van" value="Me interesa">
+              <span>¡Me interesa!</span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="van" value="No la necesito">
+              <span>No la necesito</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="field van-phone" id="vanPhoneField" hidden>
+          <label class="field-label" for="fPhone">Tu número de teléfono</label>
+          <span class="field-hint">Lo usaremos solo para contactarte y coordinar la van.</span>
+          <input type="tel" id="fPhone" name="telefono" autocomplete="tel" inputmode="tel" placeholder="+56 9 1234 5678">
+        </div>
+      </div>
+
+      <!-- v) MENSAJE -->
+      <div class="field">
+        <label class="field-label" for="fMsg">Un mensajito para los novios</label>
+        <textarea id="fMsg" name="mensaje"></textarea>
+      </div>
+
+      <!-- vi) CANCIÓN -->
+      <div class="field">
+        <label class="field-label" for="fSong">Una canción que no puede faltar</label>
+        <span class="field-hint">Escribe el nombre de la canción y el artista.</span>
+        <input type="text" id="fSong" name="cancion" placeholder="Ej: Canción – Artista">
+      </div>
+
+      </div><!-- /attendingFields -->
+
+      <button class="rsvp-submit" id="rsvpSubmit" type="submit" disabled>
+        Enviar confirmación
+      </button>
+
+      <p class="rsvp-feedback" id="rsvpFeedback" aria-live="polite">
+        Firma los 5 pactos para activar el botón.
+      </p>
+
+    </form>
+
+    <div class="rsvp-thanks" id="rsvpThanks">
+      <strong>¡Gracias por confirmar!</strong>
+      Recibimos tu respuesta. Nos vemos el 13 de febrero. 🥂
+
+      <div class="calendar-box" id="calendarBox" hidden>
+        <p class="calendar-hint">¡Para que no se te pase la fecha!</p>
+        <a
+          class="gift-button"
+          id="calendarBtn"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Agendar el evento
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- SECCIÓN 8: CONTADOR (siempre visible, al final) -->
+
+  <section class="countdown" id="countdown" role="timer" aria-label="Cuenta regresiva para el matrimonio">
+
+    <p class="countdown-heading">CUENTA REGRESIVA</p>
+
+    <h2 class="countdown-title">Falta poco para el gran día</h2>
+
+    <div class="countdown-grid" id="countdownGrid">
+      <div class="countdown-unit">
+        <span class="countdown-number" id="cdDays">0</span>
+        <span class="countdown-label">Días</span>
+      </div>
+      <div class="countdown-unit">
+        <span class="countdown-number" id="cdHours">00</span>
+        <span class="countdown-label">Horas</span>
+      </div>
+      <div class="countdown-unit">
+        <span class="countdown-number" id="cdMinutes">00</span>
+        <span class="countdown-label">Min</span>
+      </div>
+      <div class="countdown-unit">
+        <span class="countdown-number" id="cdSeconds">00</span>
+        <span class="countdown-label">Seg</span>
+      </div>
+    </div>
+
+    <p class="countdown-date">13 DE FEBRERO DE 2027 · 17:00 HRS.</p>
+
+  </section>
+
+  <footer>
+    CON MUCHO AMOR · M & H
+  </footer>
+
+</section>
+
+<script>
+function openInvitation() {
+
+  const envelope = document.getElementById("envelope");
+  const invitation = document.getElementById("invitation");
+
+  if (envelope.classList.contains("open")) return;
+
+  envelope.classList.add("open");
+
+  setTimeout(() => {
+    document.getElementById("cover").style.display = "none";
+    invitation.classList.add("visible");
+    window.scrollTo(0, 0);
+  }, 1000);
+}
+
+function copyBankData() {
+  const text =
+`Marisol Valeria Garín Opazo
+RUT: 19.143.506-0
+Mercado Pago
+Cuenta Vista
+N° de cuenta: 1041390804
+marisolgarin1@gmail.com`;
+
+  const btn = document.getElementById("copyBtn");
+
+  const showCopied = () => {
+    const original = btn.textContent;
+    btn.textContent = "¡Datos copiados!";
+    setTimeout(() => { btn.textContent = original; }, 2500);
+  };
+
+  const fallback = () => {
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand("copy"); showCopied(); } catch (e) {}
+    document.body.removeChild(ta);
+  };
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(showCopied).catch(fallback);
+  } else {
+    fallback();
+  }
+}
+
+/* PACTOS Y CONDICIONES */
+
+function allPactsAccepted() {
+  const checks = document.querySelectorAll(".pact-check");
+  return checks.length > 0 && Array.from(checks).every(c => c.checked);
+}
+
+function updatePactsStatus() {
+  const checks = document.querySelectorAll(".pact-check");
+  const done = Array.from(checks).filter(c => c.checked).length;
+  const status = document.getElementById("pactsStatus");
+  const complete = done === checks.length;
+
+  status.textContent = complete
+    ? "¡Todos los pactos firmados! Ya puedes confirmar tu asistencia 🥂"
+    : done + " de " + checks.length + " pactos firmados";
+  status.classList.toggle("complete", complete);
+
+  // Aviso para el RSVP (próximo hito)
+  document.dispatchEvent(new CustomEvent("pactsChange", { detail: { complete } }));
+}
+
+document.querySelectorAll(".pact-check").forEach(c => {
+  c.addEventListener("change", updatePactsStatus);
+});
+
+/* RSVP */
+
+// Pegar aquí la URL de la aplicación web de Google Apps Script (termina en /exec)
+const RSVP_ENDPOINT = "https://script.google.com/macros/s/AKfycbyAZVjn7k9CtWUdwcCMAwGeiDU9U--_Ny5g8GDEhqnj_ag6WlIgZjtj_ZJBqbz05LA/exec";
+
+const rsvpForm = document.getElementById("rsvpForm");
+const rsvpSubmit = document.getElementById("rsvpSubmit");
+const rsvpFeedback = document.getElementById("rsvpFeedback");
+const attendingFields = document.getElementById("attendingFields");
+const vanPhoneField = document.getElementById("vanPhoneField");
+
+function setFeedback(message, type) {
+  rsvpFeedback.textContent = message;
+  rsvpFeedback.className = "rsvp-feedback" + (type ? " " + type : "");
+}
+
+function syncRsvpButton() {
+  const ready = allPactsAccepted();
+  rsvpSubmit.disabled = !ready;
+  if (ready) {
+    setFeedback("", "");
+  } else {
+    setFeedback("Firma los " + document.querySelectorAll(".pact-check").length + " pactos para activar el botón.", "");
+  }
+}
+
+// Muestra u oculta campos según las respuestas
+function updateConditionalFields() {
+  const notAttending = rsvpForm.elements["asistencia"].value === "No";
+  attendingFields.hidden = notAttending;
+  vanPhoneField.hidden = rsvpForm.elements["van"].value !== "Me interesa";
+}
+
+rsvpForm.addEventListener("change", updateConditionalFields);
+document.addEventListener("pactsChange", syncRsvpButton);
+syncRsvpButton();
+updateConditionalFields();
+
+rsvpForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  if (!allPactsAccepted()) {
+    setFeedback("Primero debes firmar todos los pactos. 😉", "error");
+    return;
+  }
+
+  const name = rsvpForm.elements["nombre"].value.trim();
+  const attendance = rsvpForm.elements["asistencia"].value;
+  const attending = attendance === "Sí";
+
+  if (!name) {
+    setFeedback("Cuéntanos tu nombre y apellido.", "error");
+    rsvpForm.elements["nombre"].focus();
+    return;
+  }
+
+  if (!attendance) {
+    setFeedback("Indícanos si nos acompañas o no.", "error");
+    return;
+  }
+
+  const menu = rsvpForm.elements["menu"].value;
+  const van = rsvpForm.elements["van"].value;
+  const phone = rsvpForm.elements["telefono"].value.trim();
+
+  if (attending && !menu) {
+    setFeedback("Elige tu menú: tradicional, vegetariano o vegano.", "error");
+    return;
+  }
+
+  if (attending && van === "Me interesa" && phone.replace(/\D/g, "").length < 8) {
+    setFeedback("Déjanos un teléfono válido para coordinar la van.", "error");
+    rsvpForm.elements["telefono"].focus();
+    return;
+  }
+
+  if (RSVP_ENDPOINT.includes("REEMPLAZAR")) {
+    setFeedback("El formulario aún no está conectado. Avísanos por WhatsApp, por favor.", "error");
+    return;
+  }
+
+  // Si no asiste, solo se envían nombre y respuesta
+  const data = {
+    nombre: name,
+    asistencia: attendance,
+    menu: attending ? menu : "",
+    alergias: attending ? rsvpForm.elements["alergias"].value.trim() : "",
+    van: attending ? (van || "Sin respuesta") : "",
+    telefono: attending && van === "Me interesa" ? phone : "",
+    mensaje: attending ? rsvpForm.elements["mensaje"].value.trim() : "",
+    cancion: attending ? rsvpForm.elements["cancion"].value.trim() : "",
+    pactos_firmados: "Sí",
+    _gotcha: rsvpForm.elements["_gotcha"].value
+  };
+
+  rsvpSubmit.disabled = true;
+  rsvpSubmit.textContent = "Enviando...";
+  setFeedback("", "");
+
+  try {
+    // text/plain + no-cors evita problemas de CORS con Google Apps Script
+    await fetch(RSVP_ENDPOINT, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(data)
+    });
+
+    rsvpForm.style.display = "none";
+    const thanks = document.getElementById("rsvpThanks");
+    thanks.style.display = "block";
+    if (!attending) {
+      thanks.innerHTML = "<strong>¡Gracias por avisarnos!</strong>Lamentamos que no puedas venir, te vamos a extrañar. 🤍";
+    } else {
+      document.getElementById("calendarBtn").href = buildCalendarUrl();
+      document.getElementById("calendarBox").hidden = false;
+    }
+    document.getElementById("rsvp").scrollIntoView({ behavior: "smooth", block: "start" });
+  } catch (err) {
+    rsvpSubmit.disabled = false;
+    rsvpSubmit.textContent = "Enviar confirmación";
+    setFeedback("No pudimos enviar tu respuesta. Revisa tu conexión e inténtalo de nuevo.", "error");
+  }
+});
+
+/* CARRUSEL: NUESTRA HISTORIA */
+
+(function () {
+  const track = document.getElementById("storyTrack");
+  const dotsBox = document.getElementById("storyDots");
+  const prev = document.getElementById("storyPrev");
+  const next = document.getElementById("storyNext");
+  if (!track) return;
+
+  const slides = track.querySelectorAll(".carousel-slide");
+  const dots = [];
+
+  slides.forEach((_, i) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "carousel-dot";
+    b.setAttribute("aria-label", "Ir a la foto " + (i + 1));
+    b.addEventListener("click", () => goTo(i));
+    dotsBox.appendChild(b);
+    dots.push(b);
+  });
+
+  function current() {
+    return Math.round(track.scrollLeft / (track.clientWidth || 1));
+  }
+
+  function goTo(i) {
+    const n = slides.length;
+    const idx = (i + n) % n;
+    track.scrollTo({ left: idx * track.clientWidth });
+  }
+
+  function updateDots() {
+    const idx = Math.min(current(), slides.length - 1);
+    dots.forEach((d, i) => d.classList.toggle("active", i === idx));
+  }
+
+  prev.addEventListener("click", () => goTo(current() - 1));
+  next.addEventListener("click", () => goTo(current() + 1));
+
+  let ticking = false;
+  track.addEventListener("scroll", () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => { updateDots(); ticking = false; });
+  }, { passive: true });
+
+  updateDots();
+})();
+
+/* AGENDAR EN GOOGLE CALENDAR */
+
+function buildCalendarUrl() {
+  const title = "Matrimonio Marisol y Héctor";
+
+  // Hora de Chile: 17:00 del 13-feb-2027 hasta las 03:00 del día siguiente
+  const dates = "20270213T170000/20270214T030000";
+
+  const location = "Parroquia de los Santos Ángeles Custodios, Rodolfo Vergara Antúnez 0252, Providencia, Santiago";
+
+  const details = [
+    "¡Nos casamos! Gracias por acompañarnos.",
+    "",
+    "CEREMONIA (17:00 hrs.)",
+    "Parroquia de los Santos Ángeles Custodios",
+    "Rodolfo Vergara Antúnez 0252, Providencia, Santiago",
+    "https://www.google.com/maps/search/?api=1&query=Parroquia+Santos+Angeles+Custodios+Rodolfo+Vergara+Antunez+0252+Providencia",
+    "",
+    "CELEBRACIÓN (desde las 19:00 hrs.)",
+    "Centro de Eventos Torres de Paine",
+    "Presidente Gabriel González Videla, Parcela 54, Paine",
+    "https://www.google.com/maps/search/?api=1&query=Centro+de+Eventos+Torres+de+Paine+Presidente+Gabriel+Gonzalez+Videla+Parcela+54+Paine",
+    "",
+    "Dress code: Formal."
+  ].join("\n");
+
+  const params = [
+    ["action", "TEMPLATE"],
+    ["text", title],
+    ["dates", dates],
+    ["ctz", "America/Santiago"],
+    ["details", details],
+    ["location", location]
+  ];
+
+  return "https://calendar.google.com/calendar/render?" +
+    params.map(([k, v]) => k + "=" + encodeURIComponent(v)).join("&");
+}
+
+/* CONTADOR HASTA EL GRAN DÍA */
+
+// 13 de febrero de 2027, 17:00 hora de Chile (UTC-3, horario de verano).
+// Con el desfase fijo, el contador es correcto desde cualquier zona horaria.
+const WEDDING_DATE = new Date("2027-02-13T17:00:00-03:00");
+let countdownTimer = null;
+
+function startCountdown() {
+  const box = document.getElementById("countdown");
+
+  if (countdownTimer) clearInterval(countdownTimer);
+
+  const pad = (n) => String(n).padStart(2, "0");
+
+  function tick() {
+    const diff = WEDDING_DATE.getTime() - Date.now();
+
+    if (diff <= 0) {
+      clearInterval(countdownTimer);
+      box.innerHTML = '<p class="countdown-heading">CUENTA REGRESIVA</p><p class="countdown-done">¡Llegó el gran día! 💍</p>';
+      return;
+    }
+
+    const totalSeconds = Math.floor(diff / 1000);
+    document.getElementById("cdDays").textContent = Math.floor(totalSeconds / 86400);
+    document.getElementById("cdHours").textContent = pad(Math.floor((totalSeconds % 86400) / 3600));
+    document.getElementById("cdMinutes").textContent = pad(Math.floor((totalSeconds % 3600) / 60));
+    document.getElementById("cdSeconds").textContent = pad(totalSeconds % 60);
+  }
+
+  tick();
+  countdownTimer = setInterval(tick, 1000);
+}
+
+startCountdown();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 650" role="img" aria-labelledby="title desc">
+  <title id="title">Parroquia de los Santos Ángeles Custodios, Providencia</title>
+  <desc id="desc">Ilustración arquitectónica lineal de la fachada frontal, con dos torres gemelas, frontón clásico y cúpula central, en verde oliva sobre fondo transparente.</desc>
+  <g fill="none" stroke="#68785D" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Cúpula posterior -->
+    <path stroke-width="2.5" d="M365 186 C370 143 402 111 450 99 C498 111 530 143 535 186"/>
+    <path stroke-width="2" d="M390 157 C402 128 423 113 450 106 C477 113 498 128 510 157"/>
+    <path stroke-width="2" d="M450 99 V83 M442 83 H458 M450 83 V72"/>
+    <path stroke-width="1.7" d="M407 143 C420 128 435 120 450 117 C465 120 480 128 493 143"/>
+    <!-- Torres gemelas -->
+    <path stroke-width="2.5" d="M150 210 V139 H190 V122 H225 V139 H265 V210"/>
+    <path stroke-width="2.5" d="M635 210 V139 H675 V122 H710 V139 H750 V210"/>
+    <path stroke-width="2" d="M168 122 L207 91 L247 122 M653 122 L693 91 L732 122"/>
+    <path stroke-width="2" d="M184 91 V76 H230 V91 M669 91 V76 H715 V91"/>
+    <path stroke-width="1.8" d="M207 76 V63 M693 76 V63 M200 63 H214 M686 63 H700"/>
+    <path stroke-width="1.8" d="M171 157 H244 M656 157 H729"/>
+    <path stroke-width="1.7" d="M180 174 H235 M665 174 H720"/>
+    <!-- Vanos de campanario -->
+    <path stroke-width="2" d="M188 210 V181 C188 166 199 156 207 156 C215 156 226 166 226 181 V210"/>
+    <path stroke-width="2" d="M673 210 V181 C673 166 684 156 692 156 C700 156 711 166 711 181 V210"/>
+    <path stroke-width="1.5" d="M207 157 V209 M692 157 V209"/>
+    <!-- Cuerpo principal -->
+    <path stroke-width="2.5" d="M150 210 H750 V500 H150 Z"/>
+    <path stroke-width="2.5" d="M265 210 L450 147 L635 210"/>
+    <path stroke-width="1.8" d="M286 210 L450 160 L614 210"/>
+    <!-- Frontón y óculo -->
+    <path stroke-width="1.8" d="M385 193 H515"/>
+    <circle cx="450" cy="184" r="13" stroke-width="1.8"/>
+    <path stroke-width="1.2" d="M450 174 V194 M440 184 H460"/>
+    <!-- Cornisa -->
+    <path stroke-width="2" d="M150 222 H750 M150 231 H750 M265 210 V500 M635 210 V500"/>
+    <!-- Columnas y capiteles -->
+    <g stroke-width="2">
+      <path d="M300 250 H337 M296 258 H341 M302 258 V450 M335 258 V450 M296 450 H341"/>
+      <path d="M390 250 H427 M386 258 H431 M392 258 V450 M425 258 V450 M386 450 H431"/>
+      <path d="M473 250 H510 M469 258 H514 M475 258 V450 M508 258 V450 M469 450 H514"/>
+      <path d="M563 250 H600 M559 258 H604 M565 258 V450 M598 258 V450 M559 450 H604"/>
+    </g>
+    <!-- Ventanas laterales -->
+    <path stroke-width="2" d="M177 280 V251 C177 233 190 222 207 222 C224 222 237 233 237 251 V280 Z"/>
+    <path stroke-width="1.5" d="M207 223 V279 M178 251 H236"/>
+    <path stroke-width="2" d="M663 280 V251 C663 233 676 222 693 222 C710 222 723 233 723 251 V280 Z"/>
+    <path stroke-width="1.5" d="M693 223 V279 M664 251 H722"/>
+    <!-- Puerta central monumental -->
+    <path stroke-width="2.5" d="M392 500 V366 C392 326 418 298 450 298 C482 298 508 326 508 366 V500"/>
+    <path stroke-width="1.8" d="M407 500 V367 C407 337 425 316 450 316 C475 316 493 337 493 367 V500"/>
+    <path stroke-width="1.6" d="M450 316 V500 M407 425 H493"/>
+    <circle cx="438" cy="414" r="3" stroke-width="1.4"/>
+    <circle cx="462" cy="414" r="3" stroke-width="1.4"/>
+    <!-- Zócalo, escalones y basamento -->
+    <path stroke-width="2.2" d="M135 500 H765 M145 510 H755 M165 520 H735"/>
+    <path stroke-width="1.7" d="M375 500 H525 M360 510 H540 M340 520 H560"/>
+    <!-- Detalles de muro -->
+    <path stroke-width="1.2" d="M170 295 H245 M655 295 H730 M170 308 H245 M655 308 H730"/>
+    <path stroke-width="1.2" d="M278 470 H622"/>
+    <!-- Línea de suelo -->
+    <path stroke-width="1.5" d="M105 535 C240 531 330 537 450 534 C570 531 665 537 795 534"/>
+    <!-- Pequeños acentos botánicos discretos -->
+    <path stroke-width="1.5" d="M110 526 C96 512 96 498 107 489 C119 502 120 514 110 526 Z"/>
+    <path stroke-width="1.5" d="M110 526 C125 511 139 511 146 521 C136 532 122 534 110 526 Z"/>
+    <path stroke-width="1.5" d="M790 526 C804 512 804 498 793 489 C781 502 780 514 790 526 Z"/>
+    <path stroke-width="1.5" d="M790 526 C775 511 761 511 754 521 C764 532 778 534 790 526 Z"/>
+  </g>
+</svg>
